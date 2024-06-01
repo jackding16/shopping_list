@@ -3,8 +3,8 @@ const itemInput = document.getElementById('item-input');
 const itemList = document.getElementById('item-list');
 const clearBtn = document.getElementById('clear');
 const itemFilter = document.getElementById('filter');
-let isEditMode = false;
 const formBtn = itemForm.querySelector('button');
+let isEditMode = false;
 
 function displayItems() {
   const itemsFromStorage = getItemsFromStorage();
@@ -12,7 +12,7 @@ function displayItems() {
   itemsFromStorage.forEach((item) => addItemToDOM(item));
   checkUI();
 }
-function onaddItemSubmit(e) {
+function onAddItemSubmit(e) {
   e.preventDefault();
   //Validate Input
   const newItem = itemInput.value;
@@ -42,6 +42,8 @@ function onaddItemSubmit(e) {
 
   addItemToStorage(newItem);
   checkUI(newItem);
+
+  checkUI();
   itemInput.value = '';
 }
 function addItemToDOM(item) {
@@ -182,7 +184,7 @@ function checkUI() {
 
 function init() {
   //Event Handlers
-  itemForm.addEventListener('submit', onaddItemSubmit);
+  itemForm.addEventListener('submit', onAddItemSubmit);
   itemList.addEventListener('click', onClickItem);
 
   clearBtn.addEventListener('click', clearItems);
